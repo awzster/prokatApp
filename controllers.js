@@ -117,52 +117,65 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
     alert(`В корзине ${ vm.cart.length } инструментов`);
   };
 
-
   vm.rentalData = {
     name: '',
     phone: '',
-    date: '',
-    days: 1
+    email: '',
+    date: new Date(),
+    days: 1,
+    address: ''
+  };
+
+  vm.validatePhone = function() {
+    const phoneRegex = /^\+?[0-9\s\-\(\)]{10,15}$/;
+    return phoneRegex.test(vm.rentalData.phone);
+  };
+
+  vm.calculateTotal = function() {
+    if (!vm.rentalTool) return 0;
+    return vm.rentalTool.price_per_day * vm.rentalData.days;
   };
 
   vm.rentalTool = null;
 
   vm.openRentalModal = function(tool) {
-    window.console.log(111);
     vm.rentalTool = tool;
     $('#rentModal').modal('show');
   };
 
   // Метод для подтверждения аренды
+
   vm.submitRental = function() {
-    if (!vm.rentalData.name || !vm.rentalData.phone || !vm.rentalData.date) {
-      alert('Пожалуйста, заполните все обязательные поля');
+    if (!vm.validatePhone() || !vm.rentalData.address) {
+      alert('Пожалуйста, заполните все обязательные поля корректно');
       return;
     }
 
-    // Здесь можно добавить логику отправки данных на сервер
-    let rentalInfo = {
+    const rental = {
       tool: vm.rentalTool,
       customer: vm.rentalData,
-      total: vm.rentalTool.price_per_day * vm.rentalData.days
+      total: vm.calculateTotal(),
+      date: new Date()
     };
 
-    console.log('Аренда оформлена:', rentalInfo);
-    alert('Аренда оформлена! Мы свяжемся с вами для подтверждения.');
+    vm.cart.push(rental);
 
-    // Добавляем в корзину
-    vm.cart.push(rentalInfo);
+    // Покажем уведомление
+    vm.showNotification('Аренда оформлена! Номер заказа: #' + Math.floor(Math.random() * 1000));
 
-    // Закрываем модальное окно
     $('#rentModal').modal('hide');
-
-    // Сбрасываем форму
-    vm.rentalData = {
-      name: '',
-      phone: '',
-      date: '',
-      days: 1
-    };
   };
+
+  vm.showNotification = function(message) {
+    const notification = angular.element('<div class="alert alert-success notification"></div>');
+    notification.text(message);
+    angular.element(document.body).append(notification);
+
+    setTimeout(() => {
+      notification.fadeOut(() => notification.remove());
+    }, 3000);
+  };
+
+
   vm.applyFilters = applyFilters;
 });

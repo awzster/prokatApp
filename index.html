@@ -154,7 +154,7 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <img ng-src="images/{{main.selectedTool.image}}" 
+                  <img ng-src="img/{{main.selectedTool.image}}" 
                        alt="{{main.selectedTool.brand}} {{main.selectedTool.model}}"
                        class="img-responsive">
                 </div>
@@ -217,9 +217,12 @@
                       <label>Имя:</label>
                       <input type="text" class="form-control" ng-model="main.rentalData.name" required>
                     </div>
-                    <div class="form-group">
-                      <label>Телефон:</label>
+                    <div class="form-group" ng-class="{'has-error': !main.validatePhone() && main.rentalData.phone}">
+                      <label>Телефон*:</label>
                       <input type="tel" class="form-control" ng-model="main.rentalData.phone" required>
+                      <span class="help-block" ng-if="!main.validatePhone() && main.rentalData.phone">
+                        Введите корректный номер телефона
+                      </span>
                     </div>
                     <div class="form-group">
                       <label>Дата аренды:</label>
@@ -229,11 +232,30 @@
                       <label>Количество дней:</label>
                       <input type="number" class="form-control" ng-model="main.rentalData.days" min="1" value="1" required>
                     </div>
+
+                    <div class="form-group">
+                      <label>Пункт выдачи*:</label>
+                      <select class="form-control" ng-model="main.rentalData.address" required>
+                        <option value="">Выберите пункт</option>
+                        <option value="ул. Центральная, 15">ул. Центральная, 15 (м. Центр)</option>
+                        <option value="пр. Строителей, 42">пр. Строителей, 42 (м. Северная)</option>
+                      </select>
+                    </div>
+
                   </form>
                   <div class="alert alert-info">
                     <strong>Итого к оплате:</strong> 
                     {{main.rentalTool.price_per_day * (main.rentalData.days || 1)}} руб.
                   </div>
+                </div>
+
+
+                <div class="col-md-6" ng-controller="MapController as map">
+                  <h4>Выберите пункт выдачи на карте:</h4>
+                  <div id="map"></div>
+                  <p class="text-muted">
+                  <small>Кликните по метке, чтобы выбрать адрес</small>
+                  </p>
                 </div>
               </div>
             </div>
@@ -251,5 +273,38 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=8e570336-7578-487a-915f-e730882cc434&lang=ru_RU"></script>
+    -->
+ <script src="https://api-maps.yandex.ru/v3/?apikey=8e570336-7578-487a-915f-e730882cc434&lang=ru_RU"></script>
+    <script>
+angular.module('toolRentalApp').controller('MapController', function($scope) {
+        var vm = this;
+        var map;
+        var selectedPlacemark;
+        
+        initMap();
+    });
+
+
+async function initMap() {
+    await ymaps3.ready;
+
+    const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+
+    const map = new YMap(
+        document.getElementById('app'),
+        {
+            location: {
+                center: [37.588144, 55.733842],
+                zoom: 10
+            }
+        }
+    );
+
+    map.addChild(new YMapDefaultSchemeLayer());
+}
+    </script>
   </body>
 </html>

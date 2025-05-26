@@ -127,3 +127,30 @@ body {
 .cart-preview .badge {
     animation: pulse 0.5s ease-in-out;
 }
+
+#map {
+  height: 300px;
+  width: 100%;
+  margin: 15px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.ymaps-2-1-79-ground-pane {
+  filter: grayscale(20%);
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  max-width: 300px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
