@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>{{category.getCategoryName()}}</h2>
+  
+  <div class="row filters">
+    <div class="col-md-4">
+      <input type="text" class="form-control" ng-model="searchQuery" 
+             placeholder="Поиск по названию...">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control" ng-model="sortBy">
+        <option value="">Сортировка</option>
+        <option value="price_per_day">По цене (дешевые сначала)</option>
+        <option value="-price_per_day">По цене (дорогие сначала)</option>
+        <option value="brand">По бренду (А-Я)</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-6 col-md-4" 
+         ng-repeat="tool in category.tools | orderBy:sortBy | filter:searchQuery">
+      <div class="thumbnail">
+        <img ng-src="img/{{tool.image}}" alt="{{tool.brand}} {{tool.model}}">
+        <div class="caption">
+          <h3>
+            <a ng-href="#!/product/{{tool.id}}">
+              {{tool.brand}} {{tool.model}}
+            </a>
+          </h3>
+          <p>{{tool.description}}</p>
+          <p><strong>{{tool.price_per_day}} руб./день</strong></p>
+          <a ng-href="#!/product/{{tool.id}}" class="btn btn-default">
+            Подробнее
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

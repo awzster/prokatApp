@@ -1,4 +1,4 @@
-angular.module('toolRentalApp').controller('MainController', function(ToolService) {
+angular.module('toolRentalApp').controller('MainController', function(ToolService, SharedService) {
   let vm = this;
 
   vm.tools = [];
@@ -10,12 +10,14 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
   vm.inStockOnly = false;
   vm.selectedTool = null;
 
-  // Инициализация
-  ToolService.getTools().then((tools) => {
-    vm.tools = tools;
-    applyFilters();
-  });
+  vm.shared = SharedService;
 
+
+  // Показываем популярные инструменты на главной
+  ToolService.getTools().then(function(tools) {
+    vm.featuredTools = tools.slice(0, 6); // Первые 6 инструментов
+  });
+    
   ToolService.getCategories().then((categories) => {
     vm.categories = categories;
   });
@@ -23,6 +25,7 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
   // Методы
   vm.setCategory = function(category) {
     vm.currentCategory = category;
+    window.location.hash = category ? `#/category/${ category}` : '#/';
     applyFilters();
   };
 
@@ -161,7 +164,7 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
     vm.cart.push(rental);
 
     // Покажем уведомление
-    vm.showNotification('Аренда оформлена! Номер заказа: #' + Math.floor(Math.random() * 1000));
+    vm.showNotification(`Аренда оформлена! Номер заказа: #${ Math.floor(Math.random() * 1000)}`);
 
     $('#rentModal').modal('hide');
   };
@@ -178,4 +181,92 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 
 
   vm.applyFilters = applyFilters;
-});
+})
+  .controller('ContactsController', function($sce, SharedService) {
+    let vm = this;
+
+    vm.shared = SharedService;
+
+    vm.contactInfo = {
+      address: 'г. Москва, ул. Строителей, 42, офис 15',
+      phone: '8 (800) 123-45-67',
+      email: 'info@renttools.ru',
+      workingHours: 'Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00'
+    };
+
+    vm.trustedMapUrl = $sce.trustAsResourceUrl(
+      'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6f1d9a9338df8c00cb047ac31a80b7c7379c146f771bbce21ee6004e3009d8d1&amp;width=757&amp;height=653&amp;lang=ru_RU&amp;scroll=true'
+    );
+
+    vm.messengers = [
+      { name: 'Telegram', icon: 'send', link: 'https://t.me/renttools', class: 'telegram' },
+      { name: 'Viber', icon: 'phone', link: 'viber://chat?number=88001234567', class: 'viber' },
+      { name: 'WhatsApp', icon: 'ok', link: 'https://wa.me/88001234567', class: 'whatsapp' }
+    ];
+  })
+
+.controller('CategoryController', ['$routeParams', 'ToolService', 'SharedService',
+  function($routeParams, ToolService, SharedService) {
+    var vm = this;
+    vm.categoryId = $routeParams.categoryId;
+    vm.shared = SharedService;
+    
+    ToolService.getTools().then(function(tools) {
+      vm.tools = tools.filter(function(tool) {
+        return tool.category === vm.categoryId;
+      });
+    });
+    
+    vm.getCategoryName = function() {
+      return vm.shared.categories[vm.categoryId]?.name || 'Категория';
+    };
+  }
+])
+
+// Контроллер для страницы продукта
+.controller('ProductController', ['$routeParams', 'ToolService',
+  function($routeParams, ToolService) {
+    var vm = this;
+    vm.productId = $routeParams.productId;
+
+    window.console.log(vm.productId);
+    
+    ToolService.getTools().then(function(tools) {
+      vm.product = tools.find(function(tool) {
+        return tool.id == vm.productId;
+      });
+      
+      window.console.log(vm.product);
+      if (!vm.product) {
+        vm.notFound = true;
+      }
+    });
+    
+    vm.openRentalModal = function() {
+      // Логика открытия модального окна аренды
+    };
+  }
+])
+  .factory('SharedService', (ToolService) => {
+    let service = {
+      categories: {},
+      cart: []
+    };
+
+    // Загружаем категории
+    ToolService.getCategories().then((data) => {
+      service.categories = data;
+    });
+
+    return service;
+  })
+  .controller('HeaderController', function(SharedService) {
+    let vm = this;
+    vm.shared = SharedService;
+
+    vm.getCategories = function() {
+      return SharedService.categories;
+    };
+  })
+;
+

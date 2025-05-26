@@ -1,0 +1,48 @@
+<header class="main-header" ng-controller="HeaderController as header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="logo">
+          <a href="#/">
+            <img src="/logo.webp" alt="Прокат инструментов" class="img-responsive">
+            <span class="logo-text">Rent<span>Tools</span></span>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="col-md-8">
+        <div class="header-right">
+          <nav class="main-nav">
+            <ul class="nav navbar-nav">
+              <li><a href="/">Главная</a></li>
+
+              <li class="dropdown" ng-if="header.getCategories()">
+
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                  Категории <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li ng-repeat="(key, category) in header.getCategories()">
+                    <a ng-href="#!/category/{{key}}">{{category.name}}</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="#!/contacts">Контакты</a></li>
+            </ul>
+          </nav>
+
+
+          <div class="cart-preview">
+            <a href="#" ng-click="main.showCart()">
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <span class="badge">{{main.cart.length}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

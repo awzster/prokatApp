@@ -1,0 +1,45 @@
+<div class="container" ng-if="!product.notFound">
+
+  <div class="row">
+    <div class="col-md-6">
+      <img ng-src="img/{{product.product.image}}" 
+           class="img-responsive product-image"
+           alt="{{product.product.brand}} {{product.product.model}}">
+    </div>
+    <div class="col-md-6">
+      <h1>{{product.product.brand}} {{product.product.model}}</h1>
+      <p class="lead">{{product.product.description}}</p>
+      
+      <div class="well">
+        <h3>Характеристики:</h3>
+        <ul class="list-unstyled">
+          <li ng-repeat="(spec, value) in product.product.specs">
+            <strong>{{product.getSpecName(spec)}}:</strong> {{value}}
+          </li>
+          <li><strong>Вес:</strong> {{product.product.weight_kg}} кг</li>
+        </ul>
+      </div>
+      
+      <div class="price-box">
+        <h3>{{product.product.price_per_day}} руб./день</h3>
+        <p>Залог: {{product.product.deposit}} руб.</p>
+        <button class="btn btn-primary btn-lg"
+                ng-click="product.openRentalModal()"
+                ng-disabled="!product.product.in_stock">
+          Арендовать
+        </button>
+        <a ng-href="#!/category/{{product.product.category}}" class="btn btn-link">
+          ← Все {{product.shared.categories[product.product.category].name}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" ng-if="product.notFound">
+  <div class="jumbotron">
+    <h1>Инструмент не найден</h1>
+    <p>Запрошенный инструмент отсутствует в нашем каталоге.</p>
+    <a ng-href="#/" class="btn btn-primary">На главную</a>
+  </div>
+</div>

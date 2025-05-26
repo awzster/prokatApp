@@ -1,0 +1,71 @@
+<!-- views/main.html -->
+<div class="container" ng-controller="MainController as main">
+    <div class="jumbotron" ng-if="!main.currentCategory">
+        <h1>Добро пожаловать в RentTools!</h1>
+        <p class="lead">Арендуйте профессиональный инструмент по доступным ценам</p>
+        <div class="row">
+            <div class="col-md-4 feature-box">
+                <span class="glyphicon glyphicon-wrench"></span>
+                <h3>500+ инструментов</h3>
+                <p>Широкий выбор для любых задач</p>
+            </div>
+            <div class="col-md-4 feature-box">
+                <span class="glyphicon glyphicon-ruble"></span>
+                <h3>Доступные цены</h3>
+                <p>От 300 руб./сутки</p>
+            </div>
+            <div class="col-md-4 feature-box">
+                <span class="glyphicon glyphicon-ok"></span>
+                <h3>Гарантия качества</h3>
+                <p>Все инструменты проверены</p>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="main.currentCategory">
+        <h2>{{main.categories[main.currentCategory].name}}</h2>
+        <p>{{main.categories[main.currentCategory].description}}</p>
+
+        <div class="row filters">
+            <div class="col-md-3">
+                <input type="text" class="form-control" ng-model="main.searchQuery" 
+                       placeholder="Поиск по названию...">
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" ng-model="main.sortBy">
+                    <option value="">Сортировка</option>
+                    <option value="price_per_day">По цене (возр.)</option>
+                    <option value="-price_per_day">По цене (убыв.)</option>
+                    <option value="brand">По бренду (А-Я)</option>
+                    <option value="-brand">По бренду (Я-А)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="tool in main.filteredTools | orderBy:main.sortBy | filter:main.searchQuery">
+                <div class="thumbnail" ng-class="{'out-of-stock': !tool.in_stock}">
+                    <img ng-src="images/{{tool.image}}" alt="{{tool.brand}} {{tool.model}}">
+                    <div class="caption">
+                        <h3>{{tool.brand}} {{tool.model}}</h3>
+                        <p>{{tool.description}}</p>
+                        <p><strong>{{tool.price_per_day}} руб./день</strong></p>
+                        <p>Залог: {{tool.deposit}} руб.</p>
+                        <p ng-if="!tool.in_stock" class="text-danger">Нет в наличии</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button" 
+                               ng-disabled="!tool.in_stock" 
+                               ng-click="main.openRentalModal(tool)">
+                               Арендовать
+                            </a>
+                            <a href="#" class="btn btn-default" role="button"
+                               ng-click="main.showDetails(tool)">
+                               Подробнее
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

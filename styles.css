@@ -154,3 +154,199 @@ body {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
 }
+
+/* Стили для выпадающего меню */
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dropdown-menu {
+    background: #2c3e50;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu > li > a {
+    color: #ecf0f1;
+    padding: 10px 20px;
+    transition: all 0.3s;
+}
+
+.dropdown-menu > li > a:hover {
+    background: #3498db;
+    color: white;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background: transparent;
+}
+
+.caret {
+    margin-left: 5px;
+}
+
+/* Анимация выпадающего меню */
+.dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.open > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Стили для страницы контактов */
+.contact-page {
+    padding: 40px 0;
+}
+
+.contact-info h3 {
+    color: #3498db;
+    margin-top: 25px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    margin-left: 25px;
+}
+
+.messengers {
+    margin: 20px 0 30px 25px;
+}
+
+.btn-contact {
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.btn-contact.telegram { background: #0088cc; }
+.btn-contact.viber { background: #7360f2; }
+.btn-contact.whatsapp { background: #25d366; }
+
+.btn-contact:hover {
+    opacity: 0.9;
+    color: white;
+}
+
+.map-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .contact-page .col-md-6 {
+        margin-bottom: 30px;
+    }
+}
+
+/* Стиль для активной ссылки в меню */
+.navbar-nav > li > a.ng-active {
+  color: #f39c12;
+  border-bottom: 2px solid #f39c12;
+}
+
+/* Анимация перехода между страницами */
+.ng-enter {
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+.ng-enter-active {
+  opacity: 1;
+}
+
+/* Стили для главной страницы */
+.jumbotron {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.feature-box .glyphicon {
+    font-size: 40px;
+    color: #3498db;
+    margin-bottom: 15px;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.thumbnail {
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.thumbnail:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+
+.out-of-stock {
+    opacity: 0.7;
+    position: relative;
+}
+
+.out-of-stock::after {
+    content: "Нет в наличии";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.view-animate {
+  position: relative;
+}
+
+.view-animate.ng-enter,
+.view-animate.ng-leave {
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.view-animate.ng-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.view-animate.ng-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.view-animate.ng-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.view-animate.ng-leave-active {
+  opacity: 0;
+  transform: translateY(-20px);
+}
