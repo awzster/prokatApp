@@ -222,6 +222,21 @@ body {
     margin: 20px 0 30px 25px;
 }
 
+.contact-info-sm h4 {
+    color: #3498db;
+    margin-top: 15px;
+
+}
+.contact-info-sm p {
+    font-size: 14px;
+    margin-left: 15px;
+
+}
+.contact-info-sm .messengers {
+    margin: 10px 0 20px 15px;
+}
+
+
 .btn-contact {
     color: white;
     margin-right: 10px;
@@ -352,12 +367,18 @@ body {
 }
 
 /* Мобильная версия (до 768px) */
+
 @media (max-width: 767px) {
   /* Шапка */
   .logo-text {
     font-size: 18px;
   }
   
+  .modal-dialog{
+    width: 85%;
+    margin: 10px auto;
+  }
+
   .navbar-toggle {
     margin-right: 0;
     float: right;
@@ -406,6 +427,11 @@ body {
     font-size: 16px;
   }
   
+  .modal-dialog{
+    width: 75%;
+    margin: 10px auto;
+  }
+
   .btn {
     font-size: 13px;
     padding: 6px 12px;

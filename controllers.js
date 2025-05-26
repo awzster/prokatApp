@@ -212,10 +212,11 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 ])
 
 // Контроллер для страницы продукта
-.controller('ProductController', ['$routeParams', 'ToolService',
-  function($routeParams, ToolService) {
+.controller('ProductController', ['$routeParams', 'ToolService', 'SharedService',
+  function($routeParams, ToolService, SharedService) {
     var vm = this;
     vm.productId = $routeParams.productId;
+    vm.shared = SharedService;
 
     ToolService.getTools().then(function(tools) {
       vm.product = tools.find(function(tool) {
@@ -238,7 +239,7 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
       categories: {},
       cart: [],
       contactInfo: {
-        address: 'Боровлянский с/сб пос. Опытныйб ул. Строителей, д.3 кв.1',
+        address: 'Боровлянский с/с, пос. Опытный, ул. Строителей, д.3 кв.1',
         phone: '+375(25)928-2291',
         email: 'info@prokatlux.by',
         workingHours: 'Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00'
