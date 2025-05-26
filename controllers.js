@@ -213,7 +213,7 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 
 // Контроллер для страницы продукта
 .controller('ProductController', ['$routeParams', 'ToolService', 'SharedService',
-  function($routeParams, ToolService, SharedService) {
+  function($routeParams, ToolService) {
     var vm = this;
     vm.productId = $routeParams.productId;
     vm.shared = SharedService;
@@ -262,7 +262,22 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
   .controller('HeaderController', function(SharedService) {
     let vm = this;
     vm.shared = SharedService;
+    vm.isMenuOpen = false;
+    vm.isDropdownOpen = false;
 
+    vm.cartCount = 0; // Здесь реальное количество из сервиса
+
+    // Переключение dropdown
+    vm.toggleDropdown = function(event) {
+      event.preventDefault();
+      vm.isDropdownOpen = !vm.isDropdownOpen;
+    };
+
+    // Показать корзину
+    vm.showCart = function() {
+      console.log('Показать корзину');
+      // Реальная логика показа корзины
+    };
     vm.getCategories = function() {
       return SharedService.categories;
     };

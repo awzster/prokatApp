@@ -1,53 +1,45 @@
-<header class="main-header" ng-controller="HeaderController as header">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8 col-sm-4">
-        <div class="logo">
-          <a href="#!/">
-            <img src="logo.webp" alt="Прокат инструментов" class="img-responsive">
-            <span class="logo-text">Прокат<span>Люкс</span></span>
-          </a>
-        </div>
+<header class="main-header"  ng-controller="HeaderController as header">
+  
+<div class="container">
+    <div class="header-flex">
+      <div class="logo">
+        <a href="#/">
+          <img src="images/logo.png" alt="RentTools">
+          <span>RentTools</span>
+        </a>
       </div>
       
-      <div class="col-xs-4 col-sm-8">
-        <nav class="navbar navbar-default">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" 
-                    data-toggle="collapse" data-target="#main-nav">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
+      <!-- Кнопка меню для мобильных -->
+      <button class="menu-toggle" ng-click="header.isMenuOpen = !header.isMenuOpen">
+        ☰
+      </button>
+      
+      <!-- Основное меню -->
+      <nav class="main-nav" ng-class="{'open': header.isMenuOpen}">
+        <ul>
+          <li><a ng-href="#!/">Главная</a></li>
           
-          <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="nav navbar-nav">
-              <li><a ng-href="#!/">Главная</a></li>
-
-              <li class="dropdown" ng-if="header.getCategories()">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                  Категории <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li ng-repeat="(key, category) in header.getCategories()">
-                    <a ng-href="#!/category/{{key}}">{{category.name}}</a>
-                  </li>
-                </ul>
+          <!-- Выпадающий пункт -->
+          <li class="dropdown" ng-class="{'open': header.isDropdownOpen}">
+            <a href="#" ng-click="header.toggleDropdown($event)">
+              Категории ▼
+            </a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="(key, category) in header.shared.categories">
+                <a ng-href="#!/category/{{key}}">{{category.name}}</a>
               </li>
-              <li><a ng-href="#!/contacts">Контакты</a></li>
             </ul>
-            
-            <div class="cart-mobile visible-xs">
-              <a href="#" ng-click="shared.showCart()">
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-                <span class="badge">{{shared.cart.length}}</span>
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
+          </li>
+          
+          <li><a ng-href="#!/contacts">Контакты</a></li>
+          <li class="cart-link">
+            <a href="#" ng-click="showCart()">
+              Корзина <span class="badge">{{cartCount}}</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
+  
 </header>

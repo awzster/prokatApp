@@ -1,4 +1,4 @@
-angular.module('toolRentalApp', [ 'ngRoute' ])
+angular.module('toolRentalApp', [ 'ngRoute', 'ui.bootstrap.dropdown' ])
   .config([ '$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
       'self',
