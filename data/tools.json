@@ -1,0 +1,220 @@
+{
+  "categories": {
+    "electric": {
+      "name": "Элетроинструмент",
+      "description": "Дрели, перфораторы, шуруповёрты, болгарки",
+      "specs_template": {
+        "voltage": "string",
+        "battery_type": "string",
+        "battery_capacity": "string",
+        "torque_nm": "number",
+        "no_load_speed": "string"
+      }
+    },
+    "pneumatic": {
+      "name": "Пневмоинструмент",
+      "description": "we rew rewrewrewrewr",
+      "specs_template": {
+        "air_consumption": "string",
+        "air_pressure": "string",
+        "torque_nm": "number",
+        "drive_size": "string"
+      }
+    },
+    "gasoline": {
+      "name": "Бензоинструмент",
+      "description": "Газонокосилки, безокосы и еще всякая херня",
+      "specs_template": {
+        "engine_volume": "string",
+        "power": "string",
+        "fuel_tank": "string",
+        "chain_pitch": "string"
+      }
+    },
+    "manual": {
+      "name": "Ручной инструмент",
+      "description": " WWWWWWWWWWWWWWWWW FD GFDgfdgfdg fdgfdG  DGFDG",
+      "specs_template": {
+        "pieces": "number",
+        "material": "string",
+        "storage_case": "boolean"
+      }
+    }
+  },
+
+  "tools": [
+    {
+      "id": 1,
+      "category": "electric",
+      "brand": "Bosch",
+      "model": "GSB 18V-60",
+      "description": "Аккумуляторный ударный шуруповёрт",
+      "price_per_day": 700,
+      "deposit": 15000,
+      "image": "133295312.webp",
+      "in_stock": true,
+      "weight_kg": 1.8,
+      "specs": {
+        "voltage": "18V",
+        "battery_type": "Li-Ion",
+        "battery_capacity": "4.0Ah",
+        "torque_nm": 60,
+        "no_load_speed": "0-400/0-1500 rpm",
+        "chuck_type": "быстрозажимной"
+      }
+    },
+    {
+      "id": 2,
+      "category": "electric",
+      "brand": "Makita",
+      "model": "DF032DWSE",
+      "description": "Беспроводная дрель-шуруповёрт",
+      "price_per_day": 750,
+      "deposit": 16000,
+      "image": "159867005.webp",
+      "in_stock": true,
+      "weight_kg": 1.6,
+      "specs": {
+        "voltage": "12V",
+        "battery_type": "Li-Ion",
+        "battery_capacity": "3.0Ah",
+        "torque_nm": 35,
+        "no_load_speed": "0-400/0-1300 rpm"
+      }
+    },
+    {
+      "id": 3,
+      "category": "electric",
+      "brand": "Белмаш",
+      "model": "GSB 18V-60",
+      "description": "Электрическая неведомая хрень",
+      "price_per_day": 700,
+      "deposit": 15000,
+      "image": "1707298764480864.png",
+      "in_stock": false,
+      "weight_kg": 1123.8,
+      "specs": {
+        "voltage": "220V",
+        "battery_type": "Li-Ion",
+        "battery_capacity": "4.0Ah",
+        "torque_nm": 60,
+        "no_load_speed": "0-400/0-1500 rpm",
+        "chuck_type": "быстрозажимной"
+      }
+    },
+
+    {
+      "id": 6,
+      "category": "pneumatic",
+      "brand": "Chicago Pneumatic",
+      "model": "CP734",
+      "description": "Пневматический гайковёрт",
+      "price_per_day": 1200,
+      "deposit": 25000,
+      "image": "chic.webp",
+      "in_stock": true,
+      "weight_kg": 2.1,
+      "specs": {
+        "air_consumption": "4.2 cfm",
+        "air_pressure": "6.2 bar",
+        "torque_nm": 350,
+        "drive_size": "1/2\"",
+        "max_speed": "8000 rpm"
+      }
+    },
+    {
+      "id": 7,
+      "category": "pneumatic",
+      "brand": "Ingersoll Rand",
+      "model": "2115TiMAX",
+      "description": "Пневматическая шлифмашина",
+      "price_per_day": 950,
+      "deposit": 22000,
+      "image": "ing.webp",
+      "in_stock": true,
+      "weight_kg": 1.9,
+      "specs": {
+        "air_consumption": "5.1 cfm",
+        "air_pressure": "6.9 bar",
+        "spindle_speed": "12000 rpm",
+        "disc_diameter": "125 mm"
+      }
+    },
+
+    {
+      "id": 11,
+      "category": "gasoline",
+      "brand": "Husqvarna",
+      "model": "365 Special",
+      "description": "Бензопила профессиональная",
+      "price_per_day": 1500,
+      "deposit": 40000,
+      "image": "huc.webp",
+      "in_stock": true,
+      "weight_kg": 6.3,
+      "specs": {
+        "engine_volume": "65.1 cc",
+        "power": "3.8 kW",
+        "fuel_tank": "0.77 l",
+        "chain_pitch": "3/8\"",
+        "bar_length": "50 cm"
+      }
+    },
+    {
+      "id": 12,
+      "category": "gasoline",
+      "brand": "Stihl",
+      "model": "MS 261",
+      "description": "Бензопила с цепью Quickstop",
+      "price_per_day": 1700,
+      "deposit": 45000,
+      "image": "shtil.webp",
+      "in_stock": false,
+      "weight_kg": 5.7,
+      "specs": {
+        "engine_volume": "50.2 cc",
+        "power": "3.3 kW",
+        "fuel_tank": "0.5 l",
+        "chain_speed": "24 m/s"
+      }
+    },
+
+    {
+      "id": 16,
+      "category": "manual",
+      "brand": "Stanley",
+      "model": "FatMax 1-62-500",
+      "description": "Набор ручных инструментов",
+      "price_per_day": 300,
+      "deposit": 5000,
+      "image": "stan.jpeg",
+      "in_stock": true,
+      "weight_kg": 4.7,
+      "specs": {
+        "pieces": 62,
+        "material": "хромованадиевая сталь",
+        "storage_case": true,
+        "warranty_years": 3
+      }
+    },
+    {
+      "id": 17,
+      "category": "manual",
+      "brand": "Knipex",
+      "model": "00 20 06",
+      "description": "Набор плоскогубцев",
+      "price_per_day": 250,
+      "deposit": 4000,
+      "image": "knip.jpeg",
+      "in_stock": true,
+      "weight_kg": 2.1,
+      "specs": {
+        "pieces": 6,
+        "material": "кованая сталь",
+        "coating": "хромоникелевое",
+        "storage_case": true
+      }
+    }
+  ]
+  
+}
