@@ -1,12 +1,12 @@
 <div class="container" ng-if="!product.notFound">
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-xs-12 col-md-6">
       <img ng-src="img/{{product.product.image}}" 
            class="img-responsive product-image"
            alt="{{product.product.brand}} {{product.product.model}}">
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-12 col-md-6">
       <h1>{{product.product.brand}} {{product.product.model}}</h1>
       <p class="lead">{{product.product.description}}</p>
       
@@ -41,5 +41,67 @@
     <h1>Инструмент не найден</h1>
     <p>Запрошенный инструмент отсутствует в нашем каталоге.</p>
     <a ng-href="#/" class="btn btn-primary">На главную</a>
+  </div>
+</div>
+
+
+<div class="modal fade" id="rentModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Оформление аренды: <strong>{{product.product.brand}} {{product.product.model}}</strong></h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Контактная информация:</h4>
+            <div class="well">
+              <p><strong>Адреса пунктов выдачи:</strong></p>
+              <ul>
+                <li>ул. Центральная, 15 (м. Центр)</li>
+                <li>пр. Строителей, 42 (м. Северная)</li>
+                <li>ул. Инструментальная, 7 (м. Западная)</li>
+              </ul>
+              <p><strong>Телефон:</strong> 8 (800) 123-45-67</p>
+              <p><strong>Email:</strong> rent@renttools.ru</p>
+              <p><strong>Часы работы:</strong> 9:00 - 21:00 без выходных</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4>Ваши данные:</h4>
+            <form>
+              <div class="form-group">
+                <label>Имя:</label>
+                <input type="text" class="form-control" ng-model="main.rentalData.name" required>
+              </div>
+              <div class="form-group">
+                <label>Телефон:</label>
+                <input type="tel" class="form-control" ng-model="main.rentalData.phone" required>
+              </div>
+              <div class="form-group">
+                <label>Дата аренды:</label>
+                <input type="date" class="form-control" ng-model="main.rentalData.date" required>
+              </div>
+              <div class="form-group">
+                <label>Количество дней:</label>
+                <input type="number" class="form-control" ng-model="main.rentalData.days" min="1" value="1" required>
+              </div>
+            </form>
+            <div class="alert alert-info">
+              <strong>Итого к оплате:</strong> 
+              {{product.product.price_per_day * (main.rentalData.days || 1)}} руб.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-primary" ng-click="main.submitRental()">Подтвердить аренду</button>
+      </div>
+    </div>
   </div>
 </div>

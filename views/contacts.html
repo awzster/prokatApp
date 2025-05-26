@@ -5,17 +5,17 @@
       
       <div class="contact-info">
         <h3><span class="glyphicon glyphicon-map-marker"></span> Адрес:</h3>
-        <p>{{contacts.contactInfo.address}}</p>
+        <p>{{contacts.shared.contactInfo.address}}</p>
         
         <h3><span class="glyphicon glyphicon-phone"></span> Телефон:</h3>
-        <p>{{contacts.contactInfo.phone}}</p>
+        <p>{{contacts.shared.contactInfo.phone}}</p>
         
         <h3><span class="glyphicon glyphicon-envelope"></span> Email:</h3>
-        <p>{{contacts.contactInfo.email}}</p>
+        <p>{{contacts.shared.contactInfo.email}}</p>
         
         <h3><span class="glyphicon glyphicon-send"></span> Мессенджеры:</h3>
         <div class="messengers">
-          <a ng-repeat="m in contacts.messengers" 
+          <a ng-repeat="m in contacts.shared.messengers" 
              href="{{m.link}}" 
              class="btn btn-contact {{m.class}}"
              target="_blank">
@@ -24,7 +24,7 @@
         </div>
         
         <h3><span class="glyphicon glyphicon-time"></span> Часы работы:</h3>
-        <p ng-bind-html="contacts.contactInfo.workingHours"></p>
+        <p ng-bind-html="contacts.shared.contactInfo.workingHours"></p>
       </div>
     </div>
     
@@ -32,13 +32,15 @@
       <div class="map-container">
         <h3>Мы на карте</h3>
 
-        <iframe 
-           ng-src="{{contacts.trustedMapUrl}}"
-           width="100%" 
-           height="500" 
-           frameborder="0"
-           style="border: 1px solid #ddd; border-radius: 4px;">
-        </iframe>
+        <!--
+            <iframe 
+             ng-src="{{contacts.trustedMapUrl}}"
+             width="100%" 
+             height="500" 
+             frameborder="0"
+             style="border: 1px solid #ddd; border-radius: 4px;">
+          </iframe>
+        -->
         <!--
             <script type="text/javascript" charset="utf-8" async ng-src="{{contacts.trustedMapUrl}}">
           </script>

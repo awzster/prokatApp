@@ -350,3 +350,123 @@ body {
   opacity: 0;
   transform: translateY(-20px);
 }
+
+/* Мобильная версия (до 768px) */
+@media (max-width: 767px) {
+  /* Шапка */
+  .logo-text {
+    font-size: 18px;
+  }
+  
+  .navbar-toggle {
+    margin-right: 0;
+    float: right;
+  }
+  
+  .cart-preview {
+    display: none;
+  }
+  
+  .cart-mobile {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1000;
+  }
+  
+  /* Главная страница */
+  .thumbnail {
+    margin-bottom: 15px;
+  }
+  
+  .feature-box {
+    margin-bottom: 25px;
+  }
+  
+  /* Страница товара */
+  .product-image {
+    margin-bottom: 15px;
+  }
+  
+  .price-box {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Карточки товаров */
+  .col-xs-12 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Планшеты (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .thumbnail h3 {
+    font-size: 16px;
+  }
+  
+  .btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+/* Общие адаптивные стили */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn {
+  white-space: normal;
+}
+
+.form-control {
+  width: 100%;
+}
+
+/* Адаптивная таблица характеристик */
+.specs-table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Адаптивное меню */
+.navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.dropdown-menu {
+  /* position: static; */
+  float: none;
+  width: 100%;
+}
+
+.thumbnail img {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .thumbnail img {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .modal-dialog {
+    width: 95%;
+    margin: 10px auto;
+  }
+  
+  .modal-content {
+    padding: 10px;
+  }
+  
+  .modal-body {
+    padding: 15px;
+  }
+}

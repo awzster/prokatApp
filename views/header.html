@@ -1,47 +1,52 @@
 <header class="main-header" ng-controller="HeaderController as header">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-xs-8 col-sm-4">
         <div class="logo">
           <a href="#/">
-            <img src="/logo.webp" alt="Прокат инструментов" class="img-responsive">
+            <img src="images/logo.png" alt="Прокат инструментов" class="img-responsive">
             <span class="logo-text">Rent<span>Tools</span></span>
           </a>
         </div>
       </div>
-
-
-      <div class="col-md-8">
-        <div class="header-right">
-          <nav class="main-nav">
+      
+      <div class="col-xs-4 col-sm-8">
+        <nav class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" 
+                    data-toggle="collapse" data-target="#main-nav">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          
+          <div class="collapse navbar-collapse" id="main-nav">
             <ul class="nav navbar-nav">
-              <li><a href="/">Главная</a></li>
+              <li><a ng-href="/">Главная</a></li>
 
               <li class="dropdown" ng-if="header.getCategories()">
-
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Категории <span class="caret"></span>
                 </a>
-
                 <ul class="dropdown-menu">
                   <li ng-repeat="(key, category) in header.getCategories()">
                     <a ng-href="#!/category/{{key}}">{{category.name}}</a>
                   </li>
                 </ul>
               </li>
-
-              <li><a href="#!/contacts">Контакты</a></li>
+              <li><a ng-href="#!/contacts">Контакты</a></li>
             </ul>
-          </nav>
-
-
-          <div class="cart-preview">
-            <a href="#" ng-click="main.showCart()">
-              <span class="glyphicon glyphicon-shopping-cart"></span>
-              <span class="badge">{{main.cart.length}}</span>
-            </a>
+            
+            <div class="cart-mobile visible-xs">
+              <a href="#" ng-click="shared.showCart()">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span class="badge">{{shared.cart.length}}</span>
+              </a>
+            </div>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   </div>

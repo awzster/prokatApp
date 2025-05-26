@@ -1,23 +1,37 @@
 <div class="container">
   <h2>{{category.getCategoryName()}}</h2>
   
-  <div class="row filters">
-    <div class="col-md-4">
-      <input type="text" class="form-control" ng-model="searchQuery" 
-             placeholder="Поиск по названию...">
+  <!--
+      <div class="row filters">
+      <div class="col-md-4">
+        <input type="text" class="form-control" ng-model="searchQuery" 
+               placeholder="Поиск по названию...">
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" ng-model="sortBy">
+          <option value="">Сортировка</option>
+          <option value="price_per_day">По цене (дешевые сначала)</option>
+          <option value="-price_per_day">По цене (дорогие сначала)</option>
+          <option value="brand">По бренду (А-Я)</option>
+        </select>
+      </div>
     </div>
-    <div class="col-md-4">
-      <select class="form-control" ng-model="sortBy">
-        <option value="">Сортировка</option>
-        <option value="price_per_day">По цене (дешевые сначала)</option>
-        <option value="-price_per_day">По цене (дорогие сначала)</option>
-        <option value="brand">По бренду (А-Я)</option>
+  -->
+  
+  <div class="row filters">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <input type="text" class="form-control" 
+                         placeholder="Поиск...">
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <select class="form-control">
+        <!-- Опции сортировки -->
       </select>
     </div>
   </div>
-  
+
   <div class="row">
-    <div class="col-sm-6 col-md-4" 
+    <div class="col-xs-12 col-sm-6 col-md-4" 
          ng-repeat="tool in category.tools | orderBy:sortBy | filter:searchQuery">
       <div class="thumbnail">
         <img ng-src="img/{{tool.image}}" alt="{{tool.brand}} {{tool.model}}">

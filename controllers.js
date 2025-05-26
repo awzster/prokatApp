@@ -187,22 +187,10 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 
     vm.shared = SharedService;
 
-    vm.contactInfo = {
-      address: 'г. Москва, ул. Строителей, 42, офис 15',
-      phone: '8 (800) 123-45-67',
-      email: 'info@renttools.ru',
-      workingHours: 'Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00'
-    };
-
     vm.trustedMapUrl = $sce.trustAsResourceUrl(
       'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6f1d9a9338df8c00cb047ac31a80b7c7379c146f771bbce21ee6004e3009d8d1&amp;width=757&amp;height=653&amp;lang=ru_RU&amp;scroll=true'
     );
 
-    vm.messengers = [
-      { name: 'Telegram', icon: 'send', link: 'https://t.me/renttools', class: 'telegram' },
-      { name: 'Viber', icon: 'phone', link: 'viber://chat?number=88001234567', class: 'viber' },
-      { name: 'WhatsApp', icon: 'ok', link: 'https://wa.me/88001234567', class: 'whatsapp' }
-    ];
   })
 
 .controller('CategoryController', ['$routeParams', 'ToolService', 'SharedService',
@@ -229,20 +217,18 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
     var vm = this;
     vm.productId = $routeParams.productId;
 
-    window.console.log(vm.productId);
-    
     ToolService.getTools().then(function(tools) {
       vm.product = tools.find(function(tool) {
         return tool.id == vm.productId;
       });
       
-      window.console.log(vm.product);
       if (!vm.product) {
         vm.notFound = true;
       }
     });
     
     vm.openRentalModal = function() {
+      $('#rentModal').modal('show');
       // Логика открытия модального окна аренды
     };
   }
@@ -250,7 +236,19 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
   .factory('SharedService', (ToolService) => {
     let service = {
       categories: {},
-      cart: []
+      cart: [],
+      contactInfo: {
+        address: 'Боровлянский с/сб пос. Опытныйб ул. Строителей, д.3 кв.1',
+        phone: '+375(25)928-2291',
+        email: 'info@prokatlux.by',
+        workingHours: 'Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00'
+      },
+
+      messengers: [
+        { name: 'Telegram', icon: 'send', link: 'https://t.me/renttools', class: 'telegram' },
+        { name: 'Viber', icon: 'phone', link: 'viber://chat?number=+375(25)9282291', class: 'viber' },
+        { name: 'WhatsApp', icon: 'ok', link: 'https://wa.me/+375(25)9282291', class: 'whatsapp' }
+      ],
     };
 
     // Загружаем категории

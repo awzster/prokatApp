@@ -43,7 +43,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6 col-md-4" ng-repeat="tool in main.filteredTools | orderBy:main.sortBy | filter:main.searchQuery">
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="tool in main.filteredTools | orderBy:main.sortBy | filter:main.searchQuery">
                 <div class="thumbnail" ng-class="{'out-of-stock': !tool.in_stock}">
                     <img ng-src="images/{{tool.image}}" alt="{{tool.brand}} {{tool.model}}">
                     <div class="caption">
