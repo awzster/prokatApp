@@ -9,22 +9,22 @@ angular.module('toolRentalApp', [ 'ngRoute', 'ui.bootstrap' ])
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: '/prokatApp/views/main.html',
         controller: 'MainController',
         controllerAs: 'main'
       })
       .when('/contacts', {
-        templateUrl: 'views/contacts.html',
+        templateUrl: '/prokatApp/views/contacts.html',
         controller: 'ContactsController',
         controllerAs: 'contacts'
       })
       .when('/category/:categoryId', {
-        templateUrl: 'views/category.html',
+        templateUrl: '/prokatApp/views/category.html',
         controller: 'CategoryController',
         controllerAs: 'category'
       })
       .when('/product/:productId', {
-        templateUrl: 'views/product.html',
+        templateUrl: '/prokatApp/views/product.html',
         controller: 'ProductController',
         controllerAs: 'product'
       })
