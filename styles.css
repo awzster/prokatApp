@@ -214,6 +214,16 @@ body {
     margin-left: 25px;
 }
 
+.contact-info-sm h4 {
+    color: #3498db;
+    margin-top: 15px;
+}
+
+.contact-info-sm p {
+    font-size: 14px;
+    margin-left: 15px;
+}
+
 .messengers {
     margin: 20px 0 30px 25px;
 }
@@ -346,3 +356,5 @@ body {
   opacity: 0;
   transform: translateY(-20px);
 }
+
+.fa-lg-main { color: #3498db; font-size: 5rem; }

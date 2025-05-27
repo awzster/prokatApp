@@ -4,27 +4,35 @@
       <h2>Наши контакты</h2>
       
       <div class="contact-info">
-        <h3><span class="glyphicon glyphicon-map-marker"></span> Адрес:</h3>
+        <!--
+            <h3><span class="glyphicon glyphicon-map-marker"></span> Адрес:</h3>
+        -->
+        <h3><i class="fa fa-map-marker"></i> Адрес:</h3>
+
         <p>{{contacts.shared.contactInfo.address}}</p>
         
-        <h3><span class="glyphicon glyphicon-phone"></span> Телефон:</h3>
+        <h3><i class="fa fa-phone"></i> Телефон:</h3>
         <p>{{contacts.shared.contactInfo.phone}}</p>
         
-        <h3><span class="glyphicon glyphicon-envelope"></span> Email:</h3>
+        <h3><i class="fa fa-envelope"></i> Email:</h3>
         <p>{{contacts.shared.contactInfo.email}}</p>
         
-        <h3><span class="glyphicon glyphicon-send"></span> Мессенджеры:</h3>
+        <h3><i class="fa fa-send"></i> Мессенджеры:</h3>
         <div class="messengers">
           <a ng-repeat="m in contacts.shared.messengers" 
              href="{{m.link}}" 
              class="btn btn-contact {{m.class}}"
              target="_blank">
-            <span class="glyphicon glyphicon-{{m.icon}}"></span> {{m.name}}
+            <!--
+                <span class="glyphicon glyphicon-{{m.icon}}"></span>
+            -->
+            <i class="{{m.faIcon}}"></i> Telegram
+            {{m.name}}
           </a>
         </div>
         
-        <h3><span class="glyphicon glyphicon-time"></span> Часы работы:</h3>
-        <p ng-bind-html="contacts.shared.contactInfo.workingHours"></p>
+        <h3><i class="fa fa-clock-o"></i> Часы работы:</h3>
+        <p ng-bind="contacts.shared.contactInfo.workingHours"></p>
       </div>
     </div>
     

@@ -259,13 +259,13 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
         address: 'Боровлянский с/с, пос. Опытный, ул. Строителей, д.3 кв.1',
         phone: '+375(25)928-2291',
         email: 'info@prokatlux.by',
-        workingHours: 'Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00'
+        workingHours: 'Пн-Пт: 9:00 - 20:00 | Сб-Вс: 10:00 - 18:00'
       },
 
       messengers: [
-        { name: 'Telegram', icon: 'send', link: 'https://t.me/renttools', class: 'telegram' },
-        { name: 'Viber', icon: 'phone', link: 'viber://chat?number=+375(25)9282291', class: 'viber' },
-        { name: 'WhatsApp', icon: 'ok', link: 'https://wa.me/+375(25)9282291', class: 'whatsapp' }
+        { name: 'Telegram', icon: 'send', link: 'https://t.me/renttools', class: 'telegram', faIcon: 'fa fa-telegram' },
+        { name: 'Viber', icon: 'phone', link: 'viber://chat?number=+375(25)9282291', class: 'viber', faIcon: 'fa fa-viber' },
+        { name: 'WhatsApp', icon: 'ok', link: 'https://wa.me/+375(25)9282291', class: 'whatsapp', faIcon: 'fa fa-whatsapp' }
       ],
     };
 

@@ -63,27 +63,34 @@
             <h4>Наши контакты</h4>
 
             <div class="contact-info-sm">
-              <h4><span class="glyphicon glyphicon-map-marker"></span> Адрес:</h4>
+
+              <h4><i class="fa fa-map-marker"></i> Адрес:</h4>
+
               <p>{{product.shared.contactInfo.address}}</p>
 
-              <h4><span class="glyphicon glyphicon-phone"></span> Телефон:</h4>
+              <h4><i class="fa fa-phone"></i> Телефон:</h4>
               <p>{{product.shared.contactInfo.phone}}</p>
 
-              <h4><span class="glyphicon glyphicon-envelope"></span> Email:</h4>
+              <h4><i class="fa fa-envelope"></i> Email:</h4>
               <p>{{product.shared.contactInfo.email}}</p>
 
-              <h4><span class="glyphicon glyphicon-send"></span> Мессенджеры:</h4>
+              <h4><i class="fa fa-send"></i> Мессенджеры:</h4>
               <div class="messengers">
                 <a ng-repeat="m in product.shared.messengers" 
                    href="{{m.link}}" 
                    class="btn btn-contact {{m.class}}"
                    target="_blank">
-                  <span class="glyphicon glyphicon-{{m.icon}}"></span> {{m.name}}
+                  <!--
+                    <span class="glyphicon glyphicon-{{m.icon}}"></span>
+                  -->
+                  <i class="{{m.faIcon}}"></i> Telegram
+                  {{m.name}}
                 </a>
               </div>
 
-              <h4><span class="glyphicon glyphicon-time"></span> Часы работы:</h4>
-              <p ng-bind-html="product.shared.contactInfo.workingHours"></p>
+              <h4><i class="fa fa-clock-o"></i> Часы работы:</h4>
+              <p ng-bind="product.shared.contactInfo.workingHours"></p>
+
             </div>
 
           </div>
