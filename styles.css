@@ -22,15 +22,11 @@ body {
     float: left;
 }
 
-.logo-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-}
+.logo-text { font-size: 24px; font-weight: bold; color: white; }
+.logo-text span { color: #f39c12; }
 
-.logo-text span {
-    color: #f39c12;
-}
+.logo-text-xs { font-size: 24px; font-weight: bold; color: #0b2382; }
+.logo-text span { color: #f39c12; }
 
 .main-nav ul {
     margin-top: 10px;
