@@ -3,35 +3,6 @@ body {
     padding-bottom: 20px;
 }
 
-body {
-  font-size: 16px; /* Базовый размер для десктопа */
-  line-height: 1.5;
-}
-
-@media (max-width: 767px) {
-  body {
-    font-size: 18px; /* Увеличиваем базовый размер для мобильных */
-  }
-}
-
-/* Десктопные размеры */
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-
-/* Мобильные размеры */
-@media (max-width: 767px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
-  h4 { font-size: 1.25rem; }
-  
-  .jumbotron h1 {
-    font-size: 1.8rem;
-  }
-}
-
 .main-header {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     color: white;
@@ -185,11 +156,53 @@ h4 { font-size: 1.5rem; }
 }
 
 /* Стили для выпадающего меню */
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dropdown-menu {
+    background: #2c3e50;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu > li > a {
+    color: #ecf0f1;
+    padding: 10px 20px;
+    transition: all 0.3s;
+}
+
+.dropdown-menu > li > a:hover {
+    background: #3498db;
+    color: white;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background: transparent;
+}
+
 .caret {
     margin-left: 5px;
 }
 
 /* Анимация выпадающего меню */
+.dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.open > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 /* Стили для страницы контактов */
 .contact-page {
     padding: 40px 0;
@@ -208,21 +221,6 @@ h4 { font-size: 1.5rem; }
 .messengers {
     margin: 20px 0 30px 25px;
 }
-
-.contact-info-sm h4 {
-    color: #3498db;
-    margin-top: 15px;
-
-}
-.contact-info-sm p {
-    font-size: 14px;
-    margin-left: 15px;
-
-}
-.contact-info-sm .messengers {
-    margin: 10px 0 20px 15px;
-}
-
 
 .btn-contact {
     color: white;
@@ -256,6 +254,11 @@ h4 { font-size: 1.5rem; }
 }
 
 /* Стиль для активной ссылки в меню */
+.navbar-nav > li > a.ng-active {
+  color: #f39c12;
+  border-bottom: 2px solid #f39c12;
+}
+
 /* Анимация перехода между страницами */
 .ng-enter {
   transition: all 0.5s ease;
@@ -346,218 +349,4 @@ h4 { font-size: 1.5rem; }
 .view-animate.ng-leave-active {
   opacity: 0;
   transform: translateY(-20px);
-}
-
-/* Мобильная версия (до 768px) */
-
-@media (max-width: 767px) {
-  /* Шапка */
-  .logo-text {
-    font-size: 18px;
-  }
-  
-  .modal-dialog{
-    width: 85%;
-    margin: 10px auto;
-  }
-
-  .cart-preview {
-    display: none;
-  }
-  
-  .cart-mobile {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    z-index: 1000;
-  }
-  
-  /* Главная страница */
-  .thumbnail {
-    margin-bottom: 15px;
-  }
-  
-  .feature-box {
-    margin-bottom: 25px;
-  }
-  
-  /* Страница товара */
-  .product-image {
-    margin-bottom: 15px;
-  }
-  
-  .price-box {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  /* Карточки товаров */
-  .col-xs-12 {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-}
-
-/* Планшеты (768px - 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .thumbnail h3 {
-    font-size: 16px;
-  }
-  
-  .modal-dialog{
-    width: 75%;
-    margin: 10px auto;
-  }
-
-  .btn {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-}
-
-/* Общие адаптивные стили */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.btn {
-  white-space: normal;
-}
-
-.form-control {
-  width: 100%;
-}
-
-/* Адаптивная таблица характеристик */
-.specs-table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-}
-
-/* Адаптивное меню */
-.thumbnail img {
-  max-height: 200px;
-  object-fit: cover;
-}
-
-@media (max-width: 767px) {
-  .thumbnail img {
-    max-height: 150px;
-  }
-}
-
-@media (max-width: 767px) {
-  .modal-dialog {
-    width: 95%;
-    margin: 10px auto;
-  }
-  
-  .modal-content {
-    padding: 10px;
-  }
-  
-  .modal-body {
-    padding: 15px;
-  }
-}
-
-.thumbnail {
-  font-size: 1em; /* Наследует от body */
-}
-
-@media (max-width: 767px) {
-  .thumbnail {
-    font-size: 1.1em;
-  }
-  
-  .thumbnail h3 {
-    font-size: 1.3em;
-    margin-top: 10px;
-  }
-  
-  .thumbnail p {
-    font-size: 1em;
-    margin-bottom: 10px;
-  }
-  
-  .btn {
-    font-size: 1em;
-    padding: 8px 12px;
-  }
-}
-
-@media (max-width: 767px) {
-  .product-image {
-    margin-bottom: 15px;
-  }
-  
-  .price-box h3 {
-    font-size: 1.5em;
-  }
-  
-  .btn-lg {
-    font-size: 1.1em;
-    padding: 10px 16px;
-  }
-  
-  .specs-list li {
-    font-size: 1em;
-    margin-bottom: 8px;
-  }
-}
-
-
-@media (max-width: 767px) {
-  
-  .logo-text {
-    font-size: 1.3em;
-  }
-}
-
-@media (max-width: 767px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  .row {
-    margin-left: -8px;
-    margin-right: -8px;
-  }
-  
-  [class*="col-"] {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-}
-
-@media (max-width: 767px) {
-  .form-control {
-    height: 44px;
-    font-size: 16px; /* Важно для iOS, чтобы не увеличивался текст */
-  }
-  
-  select.form-control {
-    font-size: 16px;
-  }
-}
-
-/* Основные стили меню */
-
-/* Десктопная версия */
-@media (min-width: 768px) {
-  
-  .cart-mobile {
-    display: none;
-  }
-}
-
-/* Мобильная версия */
-@media (max-width: 767px) {
-  
-  .cart-preview {
-    display: none;
-  }
 }

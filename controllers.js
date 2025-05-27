@@ -187,10 +187,24 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 
     vm.shared = SharedService;
 
-    vm.trustedMapUrl = $sce.trustAsResourceUrl(
-      'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6f1d9a9338df8c00cb047ac31a80b7c7379c146f771bbce21ee6004e3009d8d1&amp;width=757&amp;height=653&amp;lang=ru_RU&amp;scroll=true'
-    );
+    vm.contactInfo = {
+      address: 'г. Москва, ул. Строителей, 42, офис 15',
+      phone: '8 (800) 123-45-67',
+      email: 'info@renttools.ru',
+      workingHours: 'Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00'
+    };
 
+    /* 
+    vm.trustedMapUrl = $sce.trustAsResourceUrl(
+      'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6f1d9a9338df8c00cb047ac31a80b7c7379c146f771bbce21ee6004e3009d8d1&amp;width=757&amp;height=653&amp;lang=ru_RU&amp;scroll=true' 
+    );
+    */
+
+    vm.messengers = [
+      { name: 'Telegram', icon: 'send', link: 'https://t.me/renttools', class: 'telegram' },
+      { name: 'Viber', icon: 'phone', link: 'viber://chat?number=88001234567', class: 'viber' },
+      { name: 'WhatsApp', icon: 'ok', link: 'https://wa.me/88001234567', class: 'whatsapp' }
+    ];
   })
 
 .controller('CategoryController', ['$routeParams', 'ToolService', 'SharedService',
@@ -213,11 +227,12 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 
 // Контроллер для страницы продукта
 .controller('ProductController', ['$routeParams', 'ToolService', 'SharedService',
-  function($routeParams, ToolService) {
+  function($routeParams, ToolService, SharedService) {
     var vm = this;
     vm.productId = $routeParams.productId;
-    vm.shared = SharedService;
 
+    vm.shared = SharedService;
+    
     ToolService.getTools().then(function(tools) {
       vm.product = tools.find(function(tool) {
         return tool.id == vm.productId;
@@ -259,25 +274,24 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
 
     return service;
   })
-  .controller('HeaderController', function(SharedService) {
+  .controller('HeaderController', function($location, SharedService) {
     let vm = this;
     vm.shared = SharedService;
-    vm.isMenuOpen = false;
-    vm.isDropdownOpen = false;
 
-    vm.cartCount = 0; // Здесь реальное количество из сервиса
-
-    // Переключение dropdown
-    vm.toggleDropdown = function(event) {
-      event.preventDefault();
-      vm.isDropdownOpen = !vm.isDropdownOpen;
+    this.isNavCollapsed = true;
+    vm.route = (path) =>
+    {
+      $location.path(path);
+      this.isNavCollapsed = !this.isNavCollapsed;
     };
 
-    // Показать корзину
-    vm.showCart = function() {
-      console.log('Показать корзину');
-      // Реальная логика показа корзины
+    vm.routeCategoty = (cat) =>
+    {
+      window.console.log(cat);
+      $location.path(`/category/${cat}`);
+      this.isNavCollapsed = !this.isNavCollapsed;
     };
+
     vm.getCategories = function() {
       return SharedService.categories;
     };

@@ -1,11 +1,12 @@
-angular.module('toolRentalApp', [ 'ngRoute', 'ui.bootstrap.dropdown' ])
+angular.module('toolRentalApp', [ 'ngRoute', 'ui.bootstrap' ])
   .config([ '$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
+
     $sceDelegateProvider.resourceUrlWhitelist([
       'self',
-      'https://api-maps.yandex.ru/**'
+      'https://api-maps.yandex.ru/**',
+      'https://yandex.ru/**'
     ]);
-  } ])
-  .config([ '$routeProvider', function($routeProvider) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -31,13 +32,4 @@ angular.module('toolRentalApp', [ 'ngRoute', 'ui.bootstrap.dropdown' ])
 
     // ... остальная конфигурация роутов ...
   } ])
-  .config([ '$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
-    $sceDelegateProvider.resourceUrlWhitelist([
-      'self',
-      'https://api-maps.yandex.ru/**',
-      'https://yandex.ru/**'
-    ]);
-
-  // ... остальная конфигурация роутинга ...
-  } ]);
 

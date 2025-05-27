@@ -1,7 +1,6 @@
 <div class="container">
   <h2>{{category.getCategoryName()}}</h2>
   
-  <!--
       <div class="row filters">
       <div class="col-md-4">
         <input type="text" class="form-control" ng-model="searchQuery" 
@@ -16,24 +15,24 @@
         </select>
       </div>
     </div>
-  -->
   
-  <div class="row filters">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <input type="text" class="form-control" 
-                         placeholder="Поиск...">
+  <!--
+      <div class="row filters">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <input type="text" class="form-control" 
+                           placeholder="Поиск...">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <select class="form-control">
+        </select>
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <select class="form-control">
-        <!-- Опции сортировки -->
-      </select>
-    </div>
-  </div>
+  -->
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4" 
          ng-repeat="tool in category.tools | orderBy:sortBy | filter:searchQuery">
-      <div class="thumbnail">
+      <div class="thumbnail" ng-class="{'out-of-stock': !tool.in_stock}">
         <img ng-src="img/{{tool.image}}" alt="{{tool.brand}} {{tool.model}}">
         <div class="caption">
           <h3>
@@ -43,6 +42,9 @@
           </h3>
           <p>{{tool.description}}</p>
           <p><strong>{{tool.price_per_day}} руб./день</strong></p>
+          <!--
+              <p ng-if="!tool.in_stock" class="text-danger">Нет в наличии</p>
+          -->
           <a ng-href="#!/product/{{tool.id}}" class="btn btn-default">
             Подробнее
           </a>

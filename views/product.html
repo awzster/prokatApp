@@ -19,7 +19,9 @@
           <li><strong>Вес:</strong> {{product.product.weight_kg}} кг</li>
         </ul>
       </div>
-      
+
+     <p ng-if="!product.product.in_stock" class="text-danger">Нет в наличии</p> 
+
       <div class="price-box">
         <h3>{{product.product.price_per_day}} руб./день</h3>
         <p>Залог: {{product.product.deposit}} руб.</p>
