@@ -50,36 +50,6 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
     $('#toolDetailsModal').modal('show');
   };
 
-  vm.getSpecName = function(key) {
-    // Простая замена ключей на читаемые названия
-    let specNames = {
-      voltage: 'Напряжение',
-      battery_type: 'Тип аккумулятора',
-      battery_capacity: 'Ёмкость аккумулятора',
-      torque_nm: 'Крутящий момент (Нм)',
-      no_load_speed: 'Скорость вращения (хол. ход)',
-      air_consumption: 'Расход воздуха',
-      air_pressure: 'Давление воздуха',
-      drive_size: 'Размер привода',
-      max_speed: 'Макс. скорость',
-      spindle_speed: 'Скорость шпинделя',
-      disc_diameter: 'Диаметр диска',
-      engine_volume: 'Объём двигателя',
-      power: 'Мощность',
-      fuel_tank: 'Объём бака',
-      chain_pitch: 'Шаг цепи',
-      bar_length: 'Длина шины',
-      chain_speed: 'Скорость цепи',
-      pieces: 'Количество предметов',
-      material: 'Материал',
-      storage_case: 'Кейс для хранения',
-      warranty_years: 'Гарантия (лет)',
-      coating: 'Покрытие'
-    };
-
-    return specNames[key] || key;
-  };
-
   function applyFilters() {
     vm.filteredTools = vm.tools.filter((tool) => {
       // Фильтр по категории
@@ -242,6 +212,38 @@ angular.module('toolRentalApp').controller('MainController', function(ToolServic
         vm.notFound = true;
       }
     });
+
+  vm.getSpecName = function(key) {
+    // Простая замена ключей на читаемые названия
+    let specNames = {
+      voltage: 'Напряжение',
+      battery_type: 'Тип аккумулятора',
+      battery_capacity: 'Ёмкость аккумулятора',
+      torque_nm: 'Крутящий момент (Нм)',
+      no_load_speed: 'Скорость вращения (хол. ход)',
+      air_consumption: 'Расход воздуха',
+      air_pressure: 'Давление воздуха',
+      drive_size: 'Размер привода',
+      max_speed: 'Макс. скорость',
+      spindle_speed: 'Скорость шпинделя',
+      disc_diameter: 'Диаметр диска',
+      engine_volume: 'Объём двигателя',
+      power: 'Мощность',
+      fuel_tank: 'Объём бака',
+      chain_pitch: 'Шаг цепи',
+      bar_length: 'Длина шины',
+      chain_speed: 'Скорость цепи',
+      pieces: 'Количество предметов',
+      material: 'Материал',
+      storage_case: 'Кейс для хранения',
+      warranty_years: 'Гарантия (лет)',
+      coating: 'Покрытие'
+    };
+
+    return specNames[key] || key;
+  };
+
+
     
     vm.openRentalModal = function() {
       $('#rentModal').modal('show');
